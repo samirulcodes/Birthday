@@ -58,12 +58,17 @@
 
     <div id="thankYouForm" class="hidden-hidden">
       <h2>Send a Thank You</h2>
-      <form onsubmit="submitForm(event)">
-        <input type="text" placeholder="Your Name" required>
+      <!-- <form onsubmit="submitForm(event)"> -->
+        <form  action="https://api.web3forms.com/submit" method="POST">
+
+          <input type="hidden" name="access_key" value="e05f0856-1dd4-40ee-9e29-020b03fadce8">
+        <input type="hidden" name="redirect" value="https://web3forms.com/success">
+
+        <input type="text" name="name" placeholder="Your Name" required>
         <textarea placeholder="Your Message" required></textarea>
         <button type="submit">Send</button>
       </form>
-      <p id="formMessage"></p>
+      <!-- <p id="formMessage"></p> -->
     </div>
   </div>
   

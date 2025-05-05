@@ -78,14 +78,18 @@ function scrollSlider(direction) {
   gallerySlider.scrollLeft += direction * 150;
 }
 
-function submitForm(event) {
-  event.preventDefault();
-  const message = document.getElementById('formMessage');
-  message.innerText = "Thank you for your kind words!";
-  setTimeout(() => {
-    document.getElementById('thankYouForm').reset();
+// function submitForm(event) {
+//   event.preventDefault();
+//   const message = document.getElementById('formMessage');
+//   message.innerText = "Thank you for your kind words!";
+//   setTimeout(() => {
+//     document.getElementById('thankYouForm').reset();
+//     message.innerText = '';
+//   }, 3000);
+// }
+
+setTimeout(() => {
+document.getElementById('thankYouForm').reset();
     message.innerText = '';
   }, 3000);
-}
-
 
