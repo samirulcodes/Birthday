@@ -1,0 +1,331 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+  background-size: 800% 800%;
+  animation: gradient 15s ease infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+.container {
+  padding: 30px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  width: 90%; /* Adjust container width */
+  max-width: 600px; /* Max width for larger screens */
+}
+
+h1, h2 ,h4{
+  margin-bottom: 20px;
+  color: #ff4081;
+}
+
+button {
+  background: #ff4081;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #e73370;
+}
+
+.hidden-hidden {
+  display: none;
+  margin-top: 20px;
+}
+
+.gallery-slider {
+  display: flex;
+  gap: 10px;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.gallery-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.gallery-slider img {
+  width: 200px;  /* Increase size for better visibility */
+  height: 200px; /* Increase size for better visibility */
+  object-fit: cover;
+  border-radius: 15px;
+  flex-shrink: 0;
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+.gallery-slider img:hover {
+  transform: scale(1.05);
+}
+
+.slider-container {
+  max-width: 650px;
+  position: relative;
+  overflow: hidden;
+  margin: auto;
+}
+
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #ff4081;
+  border: none;
+  color: white;
+  font-size: 26px;
+  padding: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 2;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: background 0.3s;
+}
+
+.slider-btn:hover {
+  background-color: #e73370;
+}
+
+.slider-btn.left {
+  left: -25px;
+}
+
+.slider-btn.right {
+  right: -25px;
+}
+
+/* Popup stays same */
+.popup {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  overflow: hidden; /* Prevents scrolling the background when the form appears */
+}
+
+.popup form {
+  max-width: 350px;
+  width: 100%;
+  overflow: auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+
+.popup img {
+  max-width: 80%;
+  max-height: 80%;
+  border-radius: 20px;
+}
+
+.popup.hidden-hidden {
+  display: none;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 300px;
+  margin: auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;  /* Enables vertical scrolling if content overflows */
+  max-height: 70vh; /* Limits the height to 70% of the viewport height */
+}
+
+input, textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 14px; /* Adjust font size to ensure readability */
+}
+
+@keyframes gradient {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+#confettiCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 999;
+}
+
+/* Decorations */
+#decorations {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  margin-top: 20px;
+  z-index: 1;
+}
+
+.bulbs {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+}
+
+.bulb {
+  width: 20px;
+  height: 30px;
+  border-radius: 50% 50% 30% 30%;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+  animation: glow 1.5s infinite alternate, flicker 0.1s infinite;
+}
+
+.bulb.red { background: red; animation-delay: 0s; }
+.bulb.yellow { background: yellow; animation-delay: 0.2s; }
+.bulb.green { background: limegreen; animation-delay: 0.4s; }
+.bulb.blue { background: deepskyblue; animation-delay: 0.6s; }
+
+@keyframes glow {
+  0% { filter: brightness(1); }
+  50% { filter: brightness(1.5); }
+  100% { filter: brightness(2.2); }
+}
+
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.balloons {
+  position: absolute;
+  bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.balloons.left {
+  left: 10px;
+}
+
+.balloons.right {
+  right: 10px;
+}
+
+.balloon {
+  width: 30px;
+  height: 40px;
+  border-radius: 50% 50% 40% 40%;
+  background-color: pink;
+  position: relative;
+  animation: float 3s ease-in-out infinite;
+}
+
+.balloon::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  height: 20px;
+  width: 2px;
+  background: #333;
+  transform: translateX(-50%);
+}
+
+.balloon.red { background: red; }
+.balloon.yellow { background: yellow; }
+.balloon.green { background: green; }
+.balloon.blue { background: blue; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+.fadeOut {
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+
+.hidden-hidden {
+  display: none;
+}
+
+/* Mobile First Design */
+@media (max-width: 600px) {
+  .container {
+    width: 90%;
+    padding: 15px;
+  }
+
+  h1, h2 {
+    font-size: 24px;
+  }
+
+  .slider-btn {
+    font-size: 20px;
+    padding: 10px;
+  }
+
+  /* Gallery Slider Adjustments for Mobile */
+  .gallery-slider {
+    display: flex;
+    gap: 10px;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    width: 100%; /* Ensure the gallery takes full width */
+  }
+
+  .gallery-slider img {
+    width: 33.33%;  /* Each image takes 1/3 of the width */
+    height: 300px;  /* Larger height for better visibility */
+  }
+
+  .slider-container {
+    max-width: 100%;
+  }
+
+  .balloons {
+    flex-direction: row;
+    justify-content: space-between;
+    position: static;
+    bottom: 0;
+    width: 100%;
+  }
+
+  .balloon {
+    width: 40px;
+    height: 50px;
+  }
+
+  form {
+    max-width: 250px;
+  }
+}
+

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1 id="greeting">Click to Begin</h1>
+    <button onclick="startCelebration()">Click Me!</button>
+
+    <!-- Decorations -->
+    <div id="decorations" class="hidden-hidden">
+      <div class="bulbs">
+        <div class="bulb red"></div>
+        <div class="bulb yellow"></div>
+        <div class="bulb green"></div>
+        <div class="bulb blue"></div>
+      </div>
+
+      <div class="balloons left">
+        <div class="balloon red"></div>
+        <div class="balloon yellow"></div>
+      </div>
+      <div class="balloons right">
+        <div class="balloon green"></div>
+        <div class="balloon blue"></div>
+      </div>
+    </div>
+
+    <!-- Inside #photos -->
+    <div id="photos" class="hidden-hidden">
+      <h4>Many many Happy return of the Day HAPPY BIRTHDAY!</h4>
+      <h4>Enjoy your day and be successful in your life</h4>
+      <h2>Memories</h2>
+      <div class="slider-container">
+        <button class="slider-btn left" onclick="scrollSlider(-1)">&#10094;</button>
+        <div class="gallery-slider" id="gallerySlider">
+          <img src="/img/IMG20240416130931.jpg" alt="Photo" onclick="showPopup(this)">
+          <img src="/img/IMG20240416130931.jpg" alt="Photo" onclick="showPopup(this)">
+          <img src="img/IMG20240416130934.jpg" alt="Photo" onclick="showPopup(this)">
+          <img src="img/IMG20240416130934.jpg" alt="Photo" onclick="showPopup(this)">
+          <img src="img/IMG20240416130934.jpg" alt="Photo" onclick="showPopup(this)">
+          <img src="img/IMG20240416130937.jpg" alt="Photo" onclick="showPopup(this)">
+          <img src="img/IMG20240416130937.jpg" alt="Photo" onclick="showPopup(this)">
+          <img src="/img/IMG20240416131016.jpg" alt="Photo" onclick="showPopup(this)">
+          <img src="/img/IMG20240416131016.jpg" alt="Photo" onclick="showPopup(this)">
+        </div>
+        <button class="slider-btn right" onclick="scrollSlider(1)">&#10095;</button>
+      </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="popup" class="popup hidden-hidden" onclick="hidePopup()">
+      <img id="popupImage" src="" alt="Enlarged">
+    </div>
+
+    <div id="thankYouForm" class="hidden-hidden">
+      <h2>Send a Thank You</h2>
+      <form onsubmit="submitForm(event)">
+        <input type="text" placeholder="Your Name" required>
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+      <p id="formMessage"></p>
+    </div>
+  </div>
+  
+  
+  <!-- Background Music -->
+  <audio id="bgMusic" src="/music.mp3" loop></audio>
+
+  <!-- Confetti -->
+  <canvas id="confettiCanvas"></canvas>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
