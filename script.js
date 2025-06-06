@@ -1,7 +1,80 @@
 
-function startCelebration() {
-  const greeting = document.getElementById('greeting');
+const riddles = [
+  {
+    riddle: "The sky is blue.",
+    answer: "true"
+  },
+  {
+    riddle: "Water boils at 50 degrees Celsius at sea level.",
+    answer: "false"
+  },
+  {
+    riddle: "The Earth is flat.",
+    answer: "false"
+  },
+  {
+    riddle: "A square has four equal sides.",
+    answer: "true"
+  }
+];
+  
+let currentRiddleIndex = 0;
+
+document.addEventListener('DOMContentLoaded', () => {
   const startButton = document.getElementById('startButton');
+  startButton.addEventListener('click', startPrelude);
+
+  const submitRiddleButton = document.getElementById('submitRiddle');
+  submitRiddleButton.addEventListener('click', checkRiddle);
+
+  });
+
+
+function startPrelude() {
+  document.getElementById('greeting').classList.add('hidden-hidden');
+  document.getElementById('startButton').classList.add('hidden-hidden');
+  document.getElementById('preludeActivity').classList.remove('hidden-hidden');
+  displayRiddle();
+}
+
+function displayRiddle() {
+  const riddleText = document.getElementById('riddleText');
+  const riddleMessage = document.getElementById('riddleMessage');
+  const trueOption = document.getElementById('trueOption');
+  const falseOption = document.getElementById('falseOption');
+
+  riddleText.innerText = riddles[currentRiddleIndex].riddle;
+  trueOption.checked = false;
+  falseOption.checked = false;
+  riddleMessage.innerText = '';
+}
+
+function checkRiddle() {
+  const riddleMessage = document.getElementById('riddleMessage');
+  const selectedOption = document.querySelector('input[name="riddleAnswer"]:checked');
+
+  if (!selectedOption) {
+    riddleMessage.innerText = "Please select an answer.";
+    riddleMessage.style.color = 'orange';
+    return;
+  }
+
+  const userAnswer = selectedOption.value;
+
+  if (userAnswer === riddles[currentRiddleIndex].answer) {
+    riddleMessage.innerText = "Correct! Get ready for the surprise!";
+    riddleMessage.style.color = 'green';
+    setTimeout(() => {
+      document.getElementById('preludeActivity').classList.add('hidden-hidden');
+      startCelebration();
+    }, 4000);
+  } else {
+    riddleMessage.innerText = "Incorrect. Try again!";
+    riddleMessage.style.color = 'red';
+  }
+}
+
+function startCelebration() {
   const animatedGreeting = document.getElementById('animatedGreeting');
   const surpriseElement = document.getElementById('surpriseElement');
   const decorations = document.getElementById('decorations');
@@ -10,10 +83,6 @@ function startCelebration() {
   const bgMusic = document.getElementById('bgMusic');
   const confettiCanvas = document.getElementById('confettiCanvas');
   const balloons = document.querySelectorAll('.balloons');
-
-  // Hide initial greeting and button
-  greeting.classList.add('hidden-hidden');
-  startButton.classList.add('hidden-hidden');
 
   // Show animated greeting
   animatedGreeting.classList.remove('hidden-hidden');

@@ -8,7 +8,20 @@
 <body>
   <div class="container">
     <h1 id="greeting">Click to Begin</h1>
-    <button id="startButton" onclick="startCelebration()">Click Me!</button>
+    <button id="startButton">Click Me!</button>
+
+    <div id="preludeActivity" class="hidden-hidden">
+      <h2>Solve this riddle to unlock your surprise!</h2>
+      <p id="riddleText"></p>
+      <div id="riddleOptions">
+        <input type="radio" id="trueOption" name="riddleAnswer" value="true">
+        <label for="trueOption">True</label>
+        <input type="radio" id="falseOption" name="riddleAnswer" value="false">
+        <label for="falseOption">False</label>
+      </div>
+      <button id="submitRiddle">Submit</button>
+      <p id="riddleMessage"></p>
+    </div>
 
     <div id="animatedGreeting" class="hidden-hidden">
       <h2 class="animated-text">Happy Birthday!</h2>
