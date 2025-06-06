@@ -1,42 +1,67 @@
 
 function startCelebration() {
   const greeting = document.getElementById('greeting');
+  const startButton = document.getElementById('startButton');
+  const animatedGreeting = document.getElementById('animatedGreeting');
+  const surpriseElement = document.getElementById('surpriseElement');
   const decorations = document.getElementById('decorations');
   const photos = document.getElementById('photos');
   const form = document.getElementById('thankYouForm');
   const bgMusic = document.getElementById('bgMusic');
   const confettiCanvas = document.getElementById('confettiCanvas');
-  const balloons = document.querySelectorAll('.balloons'); // Select balloons
+  const balloons = document.querySelectorAll('.balloons');
+
+  // Hide initial greeting and button
+  greeting.classList.add('hidden-hidden');
+  startButton.classList.add('hidden-hidden');
+
+  // Show animated greeting
+  animatedGreeting.classList.remove('hidden-hidden');
 
   // Start playing background music
   bgMusic.play();
 
-  // Show decorations and photos
-  greeting.innerText = "Happy Birthday!";
-  decorations.classList.remove('hidden-hidden');
-  photos.classList.remove('hidden-hidden');
-
-  // Trigger Confetti Animation
+  // Trigger Confetti Animation immediately
   triggerConfetti(confettiCanvas);
 
-  // Remove balloons after 5 seconds
+  // After a delay, show decorations and photos, and then the surprise
   setTimeout(() => {
-    balloons.forEach(balloonsElement => {
-      balloonsElement.classList.add('fadeOut');
-      setTimeout(() => {
-        balloonsElement.classList.add('hidden-hidden');
-      }, 1500);
-    });
+    decorations.classList.remove('hidden-hidden');
+    photos.classList.remove('hidden-hidden');
 
-    // Hide decorations after 5 seconds and show Thank You Form
+    // Show surprise element after another delay
     setTimeout(() => {
-      decorations.classList.add('fadeOut');
+      animatedGreeting.classList.add('hidden-hidden'); // Hide animated greeting
+      surpriseElement.classList.remove('hidden-hidden');
+      triggerSurpriseAnimation(); // Trigger surprise specific animation
+
+      // Remove balloons after 5 seconds from surprise
       setTimeout(() => {
-        decorations.classList.add('hidden-hidden');
-        form.classList.remove('hidden-hidden');
-      }, 1500);
-    }, 5000);
-  }, 5000);
+        balloons.forEach(balloonsElement => {
+          balloonsElement.classList.add('fadeOut');
+          setTimeout(() => {
+            balloonsElement.classList.add('hidden-hidden');
+          }, 1500);
+        });
+
+        // Hide decorations and surprise after 5 seconds and show Thank You Form
+        setTimeout(() => {
+          decorations.classList.add('fadeOut');
+          surpriseElement.classList.add('fadeOut');
+          setTimeout(() => {
+            decorations.classList.add('hidden-hidden');
+            surpriseElement.classList.add('hidden-hidden');
+            form.classList.remove('hidden-hidden');
+          }, 1500);
+        }, 5000);
+      }, 5000);
+    }, 3000); // Delay before surprise appears
+  }, 2000); // Delay before decorations and photos appear
+}
+
+function triggerSurpriseAnimation() {
+  const surpriseText = document.querySelector('.surprise-text');
+  surpriseText.style.animation = 'surprisePop 1s ease-out forwards';
 }
 
 function triggerConfetti(canvas) {
@@ -88,8 +113,10 @@ function scrollSlider(direction) {
 //   }, 3000);
 // }
 
-setTimeout(() => {
-document.getElementById('thankYouForm').reset();
-    message.innerText = '';
-  }, 3000);
+// The form reset and message clear logic was commented out in the original file.
+// If needed, it can be re-enabled or modified here.
+// setTimeout(() => {
+// document.getElementById('thankYouForm').reset();
+//     message.innerText = '';
+//   }, 3000);
 

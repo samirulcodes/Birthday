@@ -8,7 +8,15 @@
 <body>
   <div class="container">
     <h1 id="greeting">Click to Begin</h1>
-    <button onclick="startCelebration()">Click Me!</button>
+    <button id="startButton" onclick="startCelebration()">Click Me!</button>
+
+    <div id="animatedGreeting" class="hidden-hidden">
+      <h2 class="animated-text">Happy Birthday!</h2>
+    </div>
+
+    <div id="surpriseElement" class="hidden-hidden">
+      <h2 class="surprise-text">SURPRISE!</h2>
+    </div>
 
     <!-- Decorations -->
     <div id="decorations" class="hidden-hidden">
@@ -65,7 +73,7 @@
         <input type="hidden" name="redirect" value="https://web3forms.com/success">
 
         <input type="text" name="name" placeholder="Your Name" required>
-        <textarea placeholder="Your Message" required></textarea>
+        <textarea placeholder="Your Message"name="name"></textarea>
         <button type="submit">Send</button>
       </form>
       <!-- <p id="formMessage"></p> -->
